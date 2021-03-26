@@ -1,15 +1,32 @@
 <template>
   <div class="league">
     <h2>{{ name }}</h2>
-    <p>Samira</p>
+    <p>{{ bans }}</p>
   </div>
 </template>
 
 <script>
+import axios from "axios"
 export default {
   name: 'League',
   props: {
     name: String
+  },
+  data () {
+    return {
+      bans: null
+    }
+  },
+  methods: {
+    async fetchBans() {
+      const url = "/.netlify/functions/blitz";
+      const response = await axios.get(url);
+      console.log(response);
+      this.bans = response.data.message;
+    }
+  },
+  mounted () {
+    this.fetchBans();
   }
 }
 </script>
