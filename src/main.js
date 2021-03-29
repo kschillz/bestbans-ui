@@ -8,9 +8,13 @@ const store = createStore({
             lastUpdated: '',
         }
     },
+    getters: {
+        lastUpdated: state => {
+            return new Date(state.lastUpdated).toLocaleString()
+        }
+    },
     mutations: {
         setLastUpdated (state, newValue) {
-            console.log('setting last updated', newValue)
             state.lastUpdated = newValue
         }
     }

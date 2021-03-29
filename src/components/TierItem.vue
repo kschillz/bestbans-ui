@@ -44,6 +44,7 @@ export default {
       return x.ban_score - y.ban_score;
     },
     async fetchBans() {
+      // todo get latest patch
       const url = `https://bestbans-stats.netlify.app/11.6.1/${this.tierInfo.value}.json`;
       const response = await axios.get(url);
       this.champions = response.data.champions;

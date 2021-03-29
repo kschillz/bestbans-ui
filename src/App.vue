@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     lastUpdated: function () {
-      return new Date(this.$store.state.lastUpdated).toLocaleString();
+      return this.$store.getters.lastUpdated
     }
   },
   data () {
