@@ -1,7 +1,7 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 v-on:click="toggleSortOrder">{{ msg }}</h1>
   <div class="tier-list">
-    <TierItem v-for="tier in tiers"  :key="tier.value" :tierInfo="tier"/>
+    <TierItem v-for="tier in tiers"  :key="tier.value" :tierInfo="tier" :msg="msg" />
     <!-- <TierItem :tierInfo="tiers[0]" /> -->
   </div>
 </template>
@@ -15,12 +15,15 @@ export default {
   components: {
     TierItem
   },
-  props: {
-    msg: String
-  },
   data () {
     return {
+      msg: 'bestbans.gg',
       tiers: tiers
+    }
+  },
+  methods: {
+    toggleSortOrder() {
+      this.msg = this.msg == 'bestbans.gg' ? 'worstbans.gg' : 'bestbans.gg';
     }
   }
 }

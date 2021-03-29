@@ -15,20 +15,36 @@ export default {
     Champion
   },
   props: {
-    tierInfo: Object
+    tierInfo: Object,
+    msg: String
   },
   data () {
     return {
-      bans: null
+      champions: null,
+    }
+  },
+  computed: {
+    bans: function() {
+      if (this.champions == null) {
+        return null;
+      }
+      const sortFn = this.msg.includes('best') ? this.sortBestBans : this.sortWorstBans;
+      const temp = this.champions;
+      temp.sort((x, y) => sortFn(x, y));
+      return temp.slice(0, 5);
     }
   },
   methods: {
+    sortBestBans(x, y) {
+      return y.ban_score - x.ban_score;
+    },
+    sortWorstBans(x, y) {
+      return x.ban_score - y.ban_score;
+    },
     async fetchBans() {
       const url = `https://bestbans-stats.netlify.app/11.6.1/${this.tierInfo.value}.json`;
       const response = await axios.get(url);
-      const bestBans = response.data.champions;
-      bestBans.sort((x, y) => y.ban_score - x.ban_score);
-      this.bans = bestBans.slice(0, 5);
+      this.champions = response.data.champions;
     }
   },
   mounted () {
