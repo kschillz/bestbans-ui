@@ -1,16 +1,21 @@
 <template>
-  <div class="league">
-    <h2>{{ name }}</h2>
-    <p>{{ bans }}</p>
-  </div>
+  <ul class="tier-item">
+    <h2>{{ tierInfo.repr }}</h2>
+    <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
+  </ul>
 </template>
 
 <script>
+import Champion from "./Champion"
 import axios from "axios"
+
 export default {
-  name: 'League',
+  name: 'TierItem',
+  components: {
+    Champion
+  },
   props: {
-    name: String
+    tierInfo: Object
   },
   data () {
     return {
@@ -19,10 +24,11 @@ export default {
   },
   methods: {
     async fetchBans() {
-      const url = "/.netlify/functions/blitz";
+      const url = `https://bestbans-stats.netlify.app/11.6.1/${this.tierInfo.value}.json`;
       const response = await axios.get(url);
-      console.log(response);
-      this.bans = response.data.message;
+      const bestBans = response.data.champions;
+      bestBans.sort((x, y) => y.ban_score - x.ban_score);
+      this.bans = bestBans.slice(0, 5);
     }
   },
   mounted () {

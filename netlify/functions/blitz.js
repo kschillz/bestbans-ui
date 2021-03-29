@@ -1,34 +1,18 @@
-const tiers = {
-    IRON: 'IRON',
-    BRONZE: 'BRONZE',
-    SILVER: 'SILVER',
-    GOLD: 'GOLD',
-    PLATINUM: 'PLATINUM',
-    DIAMOND: 'DIAMOND',
-    MASTER: 'MASTER',
-    GRANDMASTER: 'GRANDMASTER',
-    CHALLENGER: 'CHALLENGER',
-    PLATINUM_PLUS: 'PLATINUM_PLUS',
-};
-
-const queues = {
-    NORMAL_DRAFT: 400,
-    RANKED_SOLO: 420,
-    NORMAL_BLIND: 430,
-    RANKED_FLEX: 440,
-    ARAM: 450,
-};
-
-const roles = {
-    ALL: 'ALL',
-    TOP: 'TOP',
-    JUNGLE: 'JUNGLE',
-    MID: 'MID',
-    ADC: 'ADC',
-    SUPPORT: 'SUPPORT',
-};
+// const axios = require('axios');
 
 exports.handler = async function(event, context) {
+    // const { role, queue, tier } = event.queryStringParameters;
+    // console.log(role, queue, tier);
+    // const blitzUrl = 'https://flash.blitz.gg/graphql';
+    // const graphQlQuery = 'query ($region: String, $language: String, $queue: Int, $tier: String, $role: String, $patch: String) { lolChampionsListOverview(region: $region, language: $language, queue: $queue, tier: $tier, role: $role, patch: $patch) { champion_id champion { name key } role tier total_game_count stats { winRate pickRate banRate games } } }';
+    // const queryVariables = `{{"language":"en","role":"${role}","region":"world","queue":${queue},"tier":"${tier}","patch":"11.6"}}`;
+    // const response = await axios.get(blitzUrl, {
+    //     params: {
+    //         query: graphQlQuery,
+    //         variables: queryVariables
+    //     }
+    // })
+    // console.log(response);
     return {
         statusCode: 200,
         body: JSON.stringify({ message: "Brand" })

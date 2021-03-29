@@ -1,15 +1,15 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <HelloWorld msg="bestbans.gg"/>
+  <TierList msg="bestbans.gg"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TierList from './components/TierList.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TierList
   }
 }
 </script>
