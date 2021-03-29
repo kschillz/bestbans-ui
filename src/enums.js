@@ -1,14 +1,14 @@
 export const tiers = [
-    { value: 'IRON', repr: 'Iron' },
-    { value: 'BRONZE', repr: 'Bronze' },
-    { value: 'SILVER', repr: 'Silver' },
-    { value: 'GOLD', repr: 'Gold' },
-    { value: 'PLATINUM', repr: 'Platinum' },
-    { value: 'DIAMOND', repr: 'Diamond' },
-    { value: 'MASTER', repr: 'Master' },
-    { value: 'GRANDMASTER', repr: 'Grandmaster' },
-    { value: 'CHALLENGER', repr: 'Challenger' },
-    { value: 'PLATINUM_PLUS', repr: 'Plat+' },
+    { value: 'iron', repr: 'Iron' },
+    { value: 'bronze', repr: 'Bronze' },
+    { value: 'silver', repr: 'Silver' },
+    { value: 'gold', repr: 'Gold' },
+    { value: 'platinum', repr: 'Platinum' },
+    { value: 'diamond', repr: 'Diamond' },
+    { value: 'master', repr: 'Master' },
+    { value: 'grandmaster', repr: 'Grandmaster' },
+    { value: 'challenger', repr: 'Challenger' },
+    { value: 'platinum_plus', repr: 'Plat+' },
 ]
 
 export const Queue = {

@@ -48,6 +48,9 @@ export default {
       const response = await axios.get(url);
       this.champions = response.data.champions;
       this.averageWinRate = response.data.average_win_rate;
+      if (this.tierInfo.value == 'iron') {
+        this.$store.commit('setLastUpdated', response.data.last_updated);
+      }
     }
   },
   mounted () {

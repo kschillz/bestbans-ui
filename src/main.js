@@ -1,4 +1,22 @@
 import { createApp } from 'vue'
+import { createStore } from 'vuex'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const store = createStore({
+    state () {
+        return {
+            lastUpdated: '',
+        }
+    },
+    mutations: {
+        setLastUpdated (state, newValue) {
+            console.log('setting last updated', newValue)
+            state.lastUpdated = newValue
+        }
+    }
+})
+
+const app = createApp(App)
+
+app.use(store)
+app.mount('#app')
