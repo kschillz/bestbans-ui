@@ -1,6 +1,7 @@
 <template>
   <ul class="tier-item">
     <h2>{{ tierInfo.repr }}</h2>
+    <p>Average {{  tierInfo.repr }} Win Rate: {{ (averageWinRate * 100).toFixed(1) }}%</p>
     <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
   </ul>
 </template>
@@ -21,6 +22,7 @@ export default {
   data () {
     return {
       champions: null,
+      averageWinRate: null,
     }
   },
   computed: {
@@ -45,6 +47,7 @@ export default {
       const url = `https://bestbans-stats.netlify.app/11.6.1/${this.tierInfo.value}.json`;
       const response = await axios.get(url);
       this.champions = response.data.champions;
+      this.averageWinRate = response.data.average_win_rate;
     }
   },
   mounted () {

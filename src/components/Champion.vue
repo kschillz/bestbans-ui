@@ -2,7 +2,9 @@
   <li class="champion-info">
     <img :src="`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${championStats.id}.png`" />
     <h4>{{ championStats.name }}</h4>
-    <p>{{ championStats.ban_score }}</p>
+    <p>Ban Score: {{ championStats.ban_score.toFixed(2) }}</p>
+    <p>Pick Rate: {{ (championStats.pick_rate * 1000).toFixed(1) }}%</p>
+    <p>Win Rate: {{ (championStats.win_rate * 100).toFixed(1) }}%</p>
   </li>
 </template>
 
