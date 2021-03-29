@@ -1,6 +1,6 @@
 <template>
   <li class="champion-info">
-    <img :src="`http://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${championStats.id}.png`" />
+    <img :src="`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${championStats.id}.png`" />
     <h4>{{ championStats.name }}</h4>
     <p>{{ championStats.ban_score }}</p>
   </li>
