@@ -2,6 +2,7 @@ const { verifyKey } = require('discord-interactions');
 
 exports.handler = async function(event, context) {
     console.log(event);
+    console.log(context);
     const signature = event.headers['x-signature-ed25519'];
     const timestamp = event.headers['x-signature-timestamp'];
     console.log(signature, timestamp);
