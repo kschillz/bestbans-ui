@@ -2,9 +2,11 @@
   <li class="champion-info">
     <img :src="`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${championStats.id}.png`" />
     <h4>{{ championStats.name }}</h4>
-    <p>Ban Score: {{ championStats.ban_score.toFixed(2) }}</p>
-    <p>Pick Rate: {{ (championStats.pick_rate * 1000).toFixed(1) }}%</p>
-    <p>Win Rate: {{ (championStats.win_rate * 100).toFixed(1) }}%</p>
+    <div class="text-left">
+     <p>Ban Score: <span class="text-right">{{ championStats.ban_score.toFixed(2) }}</span></p>
+     <p>Pick Rate: <span class="text-right">{{ (championStats.pick_rate * 1000).toFixed(1) }}%</span></p>
+     <p>Win Rate: <span class="text-right">{{ (championStats.win_rate * 100).toFixed(1) }}%</span></p>
+    </div>
   </li>
 </template>
 
@@ -19,8 +21,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+  float: right;
+}
+
+h4 {
+  margin: 0;
+  margin-bottom: 0.5em;
 }
 ul {
   list-style-type: none;
@@ -31,5 +42,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.champion-info p {
+  margin: 0;
 }
 </style>
