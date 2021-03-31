@@ -4,11 +4,11 @@ export const tiers = [
     { value: 'silver', repr: 'Silver' },
     { value: 'gold', repr: 'Gold' },
     { value: 'platinum', repr: 'Platinum' },
+    { value: 'platinum_plus', repr: 'Plat+' },
     { value: 'diamond', repr: 'Diamond' },
     { value: 'master', repr: 'Master' },
     { value: 'grandmaster', repr: 'Grandmaster' },
     { value: 'challenger', repr: 'Challenger' },
-    { value: 'platinum_plus', repr: 'Plat+' },
 ]
 
 export const Queue = {
