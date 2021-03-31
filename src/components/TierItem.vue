@@ -1,5 +1,5 @@
 <template>
-  <ul class="tier-item">
+  <ul class="tier-item" :id="tierInfo.value">
     <h2>{{ tierInfo.repr }}</h2>
     <p>Average {{  tierInfo.repr }} Win Rate: {{ (averageWinRate * 100).toFixed(1) }}%</p>
     <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
@@ -16,8 +16,7 @@ export default {
     Champion
   },
   props: {
-    tierInfo: Object,
-    msg: String
+    tierInfo: Object
   },
   data () {
     return {
@@ -30,7 +29,9 @@ export default {
       if (this.champions == null) {
         return null;
       }
-      const sortFn = this.msg.includes('best') ? this.sortBestBans : this.sortWorstBans;
+      const sortFn = this.$store.getters.title.includes('best')
+        ? this.sortBestBans
+        : this.sortWorstBans;
       const temp = this.champions;
       temp.sort((x, y) => sortFn(x, y));
       return temp.slice(0, 5);

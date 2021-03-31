@@ -1,6 +1,6 @@
 <template>
   <div class="tier-list">
-    <TierItem v-for="tier in tiers"  :key="tier.value" :tierInfo="tier" :msg="msg" />
+    <TierItem v-for="tier in tiers" :key="tier.value" :tierInfo="tier" />
   </div>
 </template>
 
@@ -12,9 +12,6 @@ export default {
   name: 'TierList',
   components: {
     TierItem
-  },
-  props: {
-    msg: String
   },
   data () {
     return {

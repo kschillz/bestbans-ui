@@ -1,15 +1,23 @@
 <template>
   <nav>
-    <h1 v-on:click="toggleSortOrder">{{ msg }}</h1>
-    <div class="nav-right">
-      <p>Last Updated: {{ lastUpdated }}</p>
+    <h1 v-on:click="toggleSortOrder">{{ title }}</h1>
+    <div class="nav-tier">
+      <ul>
+        <li v-for="tier in tiers" :key="tier.value">
+          <a :href="`#${tier.value}`">{{tier.repr}}</a>
+        </li>
+      </ul>
     </div>
   </nav>
-  <TierList :msg="msg"/>
+  <TierList />
+  <div class="meta">
+    <p>Last Updated: {{ lastUpdated }}</p>
+  </div>
 </template>
 
 <script>
 import TierList from './components/TierList.vue'
+import { tiers } from './enums';
 
 export default {
   name: 'App',
@@ -19,16 +27,19 @@ export default {
   computed: {
     lastUpdated: function () {
       return this.$store.getters.lastUpdated
+    },
+    title: function () {
+      return this.$store.getters.title
     }
   },
   data () {
     return {
-      msg: 'bestbans.gg',
+      tiers: tiers
     }
   },
   methods: {
     toggleSortOrder() {
-      this.msg = this.msg == 'bestbans.gg' ? 'worstbans.gg' : 'bestbans.gg';
+      this.$store.commit('toggleTitle');
     }
   }
 }
@@ -44,15 +55,31 @@ export default {
 }
 nav {
   overflow: hidden;
+  text-align: center;
 }
 nav h1 {
   float: left;
-  text-align: center;
   padding: 10px;
   margin: 0px;
 }
-nav .nav-right {
+.meta {
   float: right;
-  text-align: center;
+  font-size: smaller;
+}
+.nav-tier {
+  float: right;
+  padding: 10px;
+  margin: 0px;
+}
+.nav-tier ul {
+  list-style-type: none;
+}
+.nav-tier li {
+  float: left;
+  padding-left: 10px;
+}
+.nav-tier li a {
+  display: block;
+  color: #42b983;
 }
 </style>
