@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+nav {
+  overflow: hidden;
+  text-align: center;
+}
+nav h1 {
+  float: left;
+  padding: 10px;
+  margin: 0px;
+}
+.meta {
+  float: right;
+  font-size: smaller;
+}
+.nav-tier {
+  float: right;
+  padding: 10px;
+  margin: 0px;
+}
+.nav-tier ul {
+  list-style-type: none;
+}
+.nav-tier li {
+  float: left;
+  padding-left: 10px;
+}
+.nav-tier li a {
+  display: block;
+  color: #42b983;
+}
