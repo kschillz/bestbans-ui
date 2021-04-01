@@ -1,9 +1,6 @@
 <template>
-  <nav class="flex items-center pt-10">
-    <h1
-      class="font-bold pl-10 text text-3xl w-1/12"
-      v-on:click="toggleSortOrder"
-    >
+  <nav class="flex items-center pt-4">
+    <h1 class="pl-10 w-1/12" v-on:click="toggleSortOrder">
       {{ title }}
     </h1>
     <div class="w-6/12" />

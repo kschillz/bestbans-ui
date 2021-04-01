@@ -1,11 +1,17 @@
 <template>
-  <div :id="tierInfo.value">
-    <h2>{{ tierInfo.repr }}</h2>
-    <p>
-      Average {{ tierInfo.repr }} Win Rate:
-      {{ (averageWinRate * 100).toFixed(1) }}%
-    </p>
-    <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
+  <div class="pt-8" :id="tierInfo.value">
+    <div
+      class="bg-gray-300 border-2 border-gray-400 m-auto pb-4 text-center text-gray-900 w-6/12"
+    >
+      <h2 class="pt-4">{{ tierInfo.repr }}</h2>
+      <p>
+        Average {{ tierInfo.repr }} Win Rate:
+        {{ (averageWinRate * 100).toFixed(1) }}%
+      </p>
+      <div class="flex justify-center">
+        <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
+      </div>
+    </div>
   </div>
 </template>
 

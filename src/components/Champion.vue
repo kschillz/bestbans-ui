@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-4">
     <img
       :src="`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${championStats.id}.png`"
     />
