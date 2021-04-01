@@ -9,15 +9,17 @@
   text-align: center;
   color: #2c3e50;
 }
-nav {
-  overflow: hidden;
-  text-align: center;
+
+.link {
+  color: #42b983;
+  text-decoration: none;
+  list-style: none;
 }
-nav h1 {
-  float: left;
-  padding: 10px;
-  margin: 0px;
+
+.link:hover {
+  text-decoration: underline;
 }
+
 .meta {
   float: right;
   font-size: smaller;
@@ -36,5 +38,4 @@ nav h1 {
 }
 .nav-tier li a {
   display: block;
-  color: #42b983;
 }

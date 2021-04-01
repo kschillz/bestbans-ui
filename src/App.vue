@@ -1,10 +1,15 @@
 <template>
-  <nav class="flex items-center">
-    <h1 class="pl-10 w-1/12" v-on:click="toggleSortOrder">{{ title }}</h1>
+  <nav class="flex items-center pt-10">
+    <h1
+      class="font-bold pl-10 text text-3xl w-1/12"
+      v-on:click="toggleSortOrder"
+    >
+      {{ title }}
+    </h1>
     <div class="w-6/12" />
     <ul class="flex justify-between pr-12 w-5/12">
       <li v-for="tier in tiers" :key="tier.value">
-        <a :href="`#${tier.value}`">{{ tier.repr }}</a>
+        <a class="link" :href="`#${tier.value}`">{{ tier.repr }}</a>
       </li>
     </ul>
   </nav>
