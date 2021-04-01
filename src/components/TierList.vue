@@ -1,24 +1,24 @@
 <template>
-  <div class="tier-list">
+  <div>
     <TierItem v-for="tier in tiers" :key="tier.value" :tierInfo="tier" />
   </div>
 </template>
 
 <script>
-import TierItem from './TierItem.vue'
-import { tiers } from '../enums';
+import TierItem from "./TierItem.vue";
+import { tiers } from "../enums";
 
 export default {
-  name: 'TierList',
+  name: "TierList",
   components: {
-    TierItem
+    TierItem,
   },
-  data () {
+  data() {
     return {
-      tiers: tiers
-    }
-  }
-}
+      tiers: tiers,
+    };
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

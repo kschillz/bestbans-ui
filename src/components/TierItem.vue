@@ -1,41 +1,44 @@
 <template>
-  <ul class="tier-item" :id="tierInfo.value">
+  <div :id="tierInfo.value">
     <h2>{{ tierInfo.repr }}</h2>
-    <p>Average {{  tierInfo.repr }} Win Rate: {{ (averageWinRate * 100).toFixed(1) }}%</p>
+    <p>
+      Average {{ tierInfo.repr }} Win Rate:
+      {{ (averageWinRate * 100).toFixed(1) }}%
+    </p>
     <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
-  </ul>
+  </div>
 </template>
 
 <script>
-import Champion from "./Champion"
-import axios from "axios"
+import Champion from "./Champion";
+import axios from "axios";
 
 export default {
-  name: 'TierItem',
+  name: "TierItem",
   components: {
-    Champion
+    Champion,
   },
   props: {
-    tierInfo: Object
+    tierInfo: Object,
   },
-  data () {
+  data() {
     return {
       champions: null,
       averageWinRate: null,
-    }
+    };
   },
   computed: {
-    bans: function() {
+    bans: function () {
       if (this.champions == null) {
         return null;
       }
-      const sortFn = this.$store.getters.title.includes('best')
+      const sortFn = this.$store.getters.title.includes("best")
         ? this.sortBestBans
         : this.sortWorstBans;
       const temp = this.champions;
       temp.sort((x, y) => sortFn(x, y));
       return temp.slice(0, 5);
-    }
+    },
   },
   methods: {
     sortBestBans(x, y) {
@@ -50,15 +53,15 @@ export default {
       const response = await axios.get(url);
       this.champions = response.data.champions;
       this.averageWinRate = response.data.average_win_rate;
-      if (this.tierInfo.value == 'iron') {
-        this.$store.commit('setLastUpdated', response.data.last_updated);
+      if (this.tierInfo.value == "iron") {
+        this.$store.commit("setLastUpdated", response.data.last_updated);
       }
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.fetchBans();
-  }
-}
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
