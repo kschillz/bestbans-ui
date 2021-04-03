@@ -16,7 +16,8 @@ export default {
     Champion
   },
   props: {
-    tierInfo: Object
+    tierInfo: Object,
+    patch: String
   },
   data () {
     return {
@@ -45,14 +46,10 @@ export default {
       return x.ban_score - y.ban_score;
     },
     async fetchBans() {
-      // todo get latest patch
-      const url = `https://bestbans-stats.netlify.app/11.7.1/${this.tierInfo.value}.json`;
+      const url = `https://bestbans-stats.netlify.app/${this.patch}/${this.tierInfo.value}.json`;
       const response = await axios.get(url);
       this.champions = response.data.champions;
       this.averageWinRate = response.data.average_win_rate;
-      if (this.tierInfo.value == 'iron') {
-        this.$store.commit('setLastUpdated', response.data.last_updated);
-      }
     }
   },
   mounted () {
