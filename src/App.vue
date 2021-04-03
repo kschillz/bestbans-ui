@@ -3,7 +3,7 @@
     <h1 class="pl-10 w-1/12" v-on:click="toggleSortOrder">
       {{ title }}
     </h1>
-    <ul class="justify-end pr-4 w-11/12 sm:hidden lg:flex">
+    <ul class="justify-end pr-4 w-11/12 hidden lg:flex">
       <li class="px-2" v-for="tier in tiers" :key="tier.value">
         <a class="link" :href="`#${tier.value}`">{{ tier.repr }}</a>
       </li>
