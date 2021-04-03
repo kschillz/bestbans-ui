@@ -1,7 +1,7 @@
 <template>
   <div class="pt-8" :id="tierInfo.value">
     <div
-      class="bg-gray-300 border-2 border-gray-400 lg:w-8/12 m-auto max-w-4xl md:w-10/12 pb-4 text-center text-gray-900"
+      class="bg-gray-300 border-2 border-gray-400 w-10/12 m-auto max-w-4xl pb-4 text-center text-gray-900"
     >
       <h2 class="pt-4">{{ tierInfo.repr }}</h2>
       <p>
