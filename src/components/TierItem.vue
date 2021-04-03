@@ -8,7 +8,7 @@
         Average {{ tierInfo.repr }} Win Rate:
         {{ (averageWinRate * 100).toFixed(1) }}%
       </p>
-      <div class="flex justify-center">
+      <div class="flex flex-wrap justify-center">
         <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
       </div>
     </div>
