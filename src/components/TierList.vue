@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <TierItem v-for="tier in tiers" :key="tier.value" :tierInfo="tier" />
+  <div v-if="patch">
+    <TierItem
+      v-for="tier in tiers"
+      :key="tier.value"
+      :tierInfo="tier"
+      :patch="patch"
+    />
   </div>
 </template>
 
 <script>
 import TierItem from "./TierItem.vue";
 import { tiers } from "../enums";
+import axios from "axios";
 
 export default {
   name: "TierList",
@@ -16,7 +22,19 @@ export default {
   data() {
     return {
       tiers: tiers,
+      patch: "",
     };
+  },
+  methods: {
+    async fetchMeta() {
+      const url = "https://bestbans-stats.netlify.app/meta.json";
+      const response = await axios.get(url);
+      this.patch = response.data.latest_patch;
+      this.$store.commit("setLastUpdated", response.data.last_updated);
+    },
+  },
+  mounted() {
+    this.fetchMeta();
   },
 };
 </script>
