@@ -1,13 +1,13 @@
 <template>
-  <nav>
-    <h1 v-on:click="toggleSortOrder">{{ title }}</h1>
-    <div class="nav-tier">
-      <ul>
-        <li v-for="tier in tiers" :key="tier.value">
-          <a :href="`#${tier.value}`">{{tier.repr}}</a>
-        </li>
-      </ul>
-    </div>
+  <nav class="flex items-center pt-4">
+    <h1 class="pl-10 w-1/12" v-on:click="toggleSortOrder">
+      {{ title }}
+    </h1>
+    <ul class="justify-end pr-4 w-11/12 hidden lg:flex">
+      <li class="px-2" v-for="tier in tiers" :key="tier.value">
+        <a class="link" :href="`#${tier.value}`">{{ tier.repr }}</a>
+      </li>
+    </ul>
   </nav>
   <TierList />
   <div class="meta">
@@ -16,70 +16,31 @@
 </template>
 
 <script>
-import TierList from './components/TierList.vue'
-import { tiers } from './enums';
+import TierList from "./components/TierList.vue";
+import { tiers } from "./enums";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    TierList
+    TierList,
   },
   computed: {
     lastUpdated: function () {
-      return this.$store.getters.lastUpdated
+      return this.$store.getters.lastUpdated;
     },
     title: function () {
-      return this.$store.getters.title
-    }
+      return this.$store.getters.title;
+    },
   },
-  data () {
+  data() {
     return {
-      tiers: tiers
-    }
+      tiers: tiers,
+    };
   },
   methods: {
     toggleSortOrder() {
-      this.$store.commit('toggleTitle');
-    }
-  }
-}
+      this.$store.commit("toggleTitle");
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-nav {
-  overflow: hidden;
-  text-align: center;
-}
-nav h1 {
-  float: left;
-  padding: 10px;
-  margin: 0px;
-}
-.meta {
-  float: right;
-  font-size: smaller;
-}
-.nav-tier {
-  float: right;
-  padding: 10px;
-  margin: 0px;
-}
-.nav-tier ul {
-  list-style-type: none;
-}
-.nav-tier li {
-  float: left;
-  padding-left: 10px;
-}
-.nav-tier li a {
-  display: block;
-  color: #42b983;
-}
-</style>

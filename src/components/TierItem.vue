@@ -1,42 +1,51 @@
 <template>
-  <ul class="tier-item" :id="tierInfo.value">
-    <h2>{{ tierInfo.repr }}</h2>
-    <p>Average {{  tierInfo.repr }} Win Rate: {{ (averageWinRate * 100).toFixed(1) }}%</p>
-    <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
-  </ul>
+  <div class="pt-8" :id="tierInfo.value">
+    <div
+      class="bg-gray-300 border-2 border-gray-400 w-10/12 m-auto max-w-4xl pb-4 text-center text-gray-900"
+    >
+      <h2 class="pt-4">{{ tierInfo.repr }}</h2>
+      <p>
+        Average {{ tierInfo.repr }} Win Rate:
+        {{ (averageWinRate * 100).toFixed(1) }}%
+      </p>
+      <div class="flex flex-wrap justify-center">
+        <Champion v-for="ban in bans" :key="ban.key" :championStats="ban" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import Champion from "./Champion"
-import axios from "axios"
+import Champion from "./Champion";
+import axios from "axios";
 
 export default {
-  name: 'TierItem',
+  name: "TierItem",
   components: {
-    Champion
+    Champion,
   },
   props: {
     tierInfo: Object,
-    patch: String
+    patch: String,
   },
-  data () {
+  data() {
     return {
       champions: null,
       averageWinRate: null,
-    }
+    };
   },
   computed: {
-    bans: function() {
+    bans: function () {
       if (this.champions == null) {
         return null;
       }
-      const sortFn = this.$store.getters.title.includes('best')
+      const sortFn = this.$store.getters.title.includes("best")
         ? this.sortBestBans
         : this.sortWorstBans;
       const temp = this.champions;
       temp.sort((x, y) => sortFn(x, y));
       return temp.slice(0, 5);
-    }
+    },
   },
   methods: {
     sortBestBans(x, y) {
@@ -50,12 +59,12 @@ export default {
       const response = await axios.get(url);
       this.champions = response.data.champions;
       this.averageWinRate = response.data.average_win_rate;
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.fetchBans();
-  }
-}
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

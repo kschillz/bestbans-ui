@@ -1,37 +1,42 @@
 <template>
-  <div class="tier-list" v-if="patch">
-    <TierItem v-for="tier in tiers" :key="tier.value" :tierInfo="tier" :patch="patch" />
+  <div v-if="patch">
+    <TierItem
+      v-for="tier in tiers"
+      :key="tier.value"
+      :tierInfo="tier"
+      :patch="patch"
+    />
   </div>
 </template>
 
 <script>
-import TierItem from './TierItem.vue'
-import { tiers } from '../enums';
-import axios from "axios"
+import TierItem from "./TierItem.vue";
+import { tiers } from "../enums";
+import axios from "axios";
 
 export default {
-  name: 'TierList',
+  name: "TierList",
   components: {
-    TierItem
+    TierItem,
   },
-  data () {
+  data() {
     return {
       tiers: tiers,
-      patch: ''
-    }
+      patch: "",
+    };
   },
   methods: {
     async fetchMeta() {
-      const url = 'https://bestbans-stats.netlify.app/meta.json';
+      const url = "https://bestbans-stats.netlify.app/meta.json";
       const response = await axios.get(url);
       this.patch = response.data.latest_patch;
-      this.$store.commit('setLastUpdated', response.data.last_updated);
-    }
+      this.$store.commit("setLastUpdated", response.data.last_updated);
+    },
   },
-  mounted () {
+  mounted() {
     this.fetchMeta();
-  }
-}
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
