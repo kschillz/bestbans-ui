@@ -1,7 +1,7 @@
 <template>
   <div class="px-4">
     <img
-      :src="`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${championStats.id}.png`"
+      :src="`https://ddragon.leagueoflegends.com/cdn/${patch}/img/champion/${championStats.id}.png`"
     />
     <h4>{{ championStats.name }}</h4>
     <div class="text-left">
@@ -27,6 +27,11 @@ export default {
   },
   props: {
     championStats: Object,
+  },
+  computed: {
+    patch: function () {
+      return this.$store.getters.patch;
+    },
   },
 };
 </script>

@@ -26,7 +26,6 @@ export default {
   },
   props: {
     tierInfo: Object,
-    patch: String,
   },
   data() {
     return {
@@ -55,7 +54,7 @@ export default {
       return x.ban_score - y.ban_score;
     },
     async fetchBans() {
-      const url = `https://bestbans-stats.netlify.app/${this.patch}/${this.tierInfo.value}.json`;
+      const url = `https://bestbans-stats.netlify.app/${this.$store.getters.patch}/${this.tierInfo.value}.json`;
       const response = await axios.get(url);
       this.champions = response.data.champions;
       this.averageWinRate = response.data.average_win_rate;

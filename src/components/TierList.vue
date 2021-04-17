@@ -4,7 +4,6 @@
       v-for="tier in tiers"
       :key="tier.value"
       :tierInfo="tier"
-      :patch="patch"
     />
   </div>
 </template>
@@ -22,16 +21,20 @@ export default {
   data() {
     return {
       tiers: tiers,
-      patch: "",
     };
   },
   methods: {
     async fetchMeta() {
       const url = "https://bestbans-stats.netlify.app/meta.json";
       const response = await axios.get(url);
-      this.patch = response.data.latest_patch;
+      this.$store.commit("setPatch", response.data.latest_patch);
       this.$store.commit("setLastUpdated", response.data.last_updated);
     },
+  },
+  computed: {
+    patch: function () {
+      return this.$store.getters.patch;
+    }
   },
   mounted() {
     this.fetchMeta();

@@ -8,6 +8,7 @@ const store = createStore({
         return {
             lastUpdated: '',
             title: 'bestbans.gg',
+            patch: '',
         }
     },
     getters: {
@@ -16,6 +17,9 @@ const store = createStore({
         },
         title: state => {
             return state.title
+        },
+        patch: state => {
+            return state.patch
         }
     },
     mutations: {
@@ -24,6 +28,9 @@ const store = createStore({
         },
         toggleTitle (state) {
             state.title = state.title == 'bestbans.gg' ? 'worstbans.gg': 'bestbans.gg'
+        },
+        setPatch (state, newValue) {
+            state.patch = newValue
         }
     }
 })
