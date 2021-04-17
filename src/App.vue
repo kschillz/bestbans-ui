@@ -12,6 +12,7 @@
   <TierList />
   <div class="meta">
     <p>Last Updated: {{ lastUpdated }}</p>
+    <p>Patch: {{ patch }}</p>
   </div>
 </template>
 
@@ -30,6 +31,9 @@ export default {
     },
     title: function () {
       return this.$store.getters.title;
+    },
+    patch: function() {
+      return this.$store.getters.patch;
     },
   },
   data() {
