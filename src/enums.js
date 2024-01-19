@@ -4,6 +4,7 @@ export const tiers = [
     { value: 'silver', repr: 'Silver' },
     { value: 'gold', repr: 'Gold' },
     { value: 'platinum', repr: 'Platinum' },
+    { value: 'emerald', repr: 'Emerald' },
     { value: 'diamond', repr: 'Diamond' },
     { value: 'master', repr: 'Master' },
     { value: 'grandmaster', repr: 'Grandmaster' },
