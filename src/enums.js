@@ -9,7 +9,7 @@ export const tiers = [
     { value: 'master', repr: 'Master' },
     { value: 'grandmaster', repr: 'Grandmaster' },
     { value: 'challenger', repr: 'Challenger' },
-    { value: 'platinum_plus', repr: 'Plat+' },
+    { value: 'emerald_plus', repr: 'Emerald+' },
 ]
 
 export const Queue = {

@@ -1,6 +1,6 @@
 <template>
   <nav class="flex items-center pt-4">
-    <h1 class="pl-10 w-1/12" v-on:click="toggleSortOrder">
+    <h1 class="pl-10 w-1/12">
       {{ title }}
     </h1>
     <ul class="justify-end pr-4 w-11/12 hidden lg:flex">
@@ -40,11 +40,6 @@ export default {
     return {
       tiers: tiers,
     };
-  },
-  methods: {
-    toggleSortOrder() {
-      this.$store.commit("toggleTitle");
-    },
   },
 };
 </script>

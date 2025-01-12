@@ -5,26 +5,13 @@
     />
     <h4>{{ championStats.name }}</h4>
     <div class="text-left">
-      <Stat :label="'Ban Score:'" :stat="championStats.ban_score.toFixed(2)" />
-      <Stat
-        :label="'Pick Rate:'"
-        :stat="(championStats.pick_rate * 1000).toFixed(1) + '%'"
-      />
-      <Stat
-        :label="'Win Rate:'"
-        :stat="(championStats.win_rate * 100).toFixed(1) + '%'"
-      />
     </div>
   </div>
 </template>
 
 <script>
-import Stat from "./Stat";
 export default {
   name: "Champion",
-  components: {
-    Stat,
-  },
   props: {
     championStats: Object,
   },
